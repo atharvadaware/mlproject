@@ -39,7 +39,7 @@ class ModelTrainer:
 
             models= {
                 "Random Forest" : RandomForestRegressor(),
-                "Decision Tree" : DecisionTreeRegressor(),
+                "Decision Tree" : DecisionTreeRegressor(max_depth=4),
                 "Gradient Boosting" : GradientBoostingRegressor(),
                 "Linear Regression" : LinearRegression(),
                 "K-Neighbors Regressor" : KNeighborsRegressor(),
@@ -59,6 +59,7 @@ class ModelTrainer:
             ]
             best_model=models[best_model_name]
 
+
             if best_model_score<0.6:
                 raise CustomException("No best model found")
             
@@ -70,12 +71,11 @@ class ModelTrainer:
             )
 
             predicted=best_model.predict(X_test)
-            train_predicted=best_model.predict(X_train)
+
 
             score= r2_score(y_test, predicted)
-            train_score=r2_score(y_train, train_predicted)
 
-            return (score,train_score)
+            return (score)
 
 
         except Exception as e:
