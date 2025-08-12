@@ -51,7 +51,7 @@ class DataTransformation:
             cat_pipeline = Pipeline(
                 steps=[
                     ('imputer', SimpleImputer(strategy='most_frequent')),
-                    ('one_hot_encoder', OneHotEncoder()),
+                    ('one_hot_encoder', OneHotEncoder(handle_unknown='ignore')),
                     ('scaler', StandardScaler(with_mean=False))
                 ]
             )
@@ -88,7 +88,6 @@ class DataTransformation:
             preprocessing_obj = self.get_data_transformer_obj()
 
             target_column_name = "math_score"
-            numerical_columns = ['writing_score', 'reading_score']
 
             # Separate input features and target
             input_feature_train_df = train_df.drop(columns=[target_column_name], axis=1)

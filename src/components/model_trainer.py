@@ -39,7 +39,7 @@ class ModelTrainer:
 
             models= {
                 "Random Forest" : RandomForestRegressor(),
-                "Decision Tree" : DecisionTreeRegressor(max_depth=4),
+                "Decision Tree" : DecisionTreeRegressor(),
                 "Gradient Boosting" : GradientBoostingRegressor(),
                 "Linear Regression" : LinearRegression(),
                 "K-Neighbors Regressor" : KNeighborsRegressor(),
